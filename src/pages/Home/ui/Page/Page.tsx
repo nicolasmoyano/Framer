@@ -1,10 +1,16 @@
 import { FC } from "react";
+import {AnimatePresence, motion} from 'framer-motion';
 
 const Home: FC = () => {
   return (
     <>
+    <AnimatePresence>
       <section>
-        <div className="hero min-h-[calc(100vh-64px)] bg-base-200">
+        <motion.div className="hero min-h-[calc(100vh-64px)] bg-base-200"
+        transition={{ delay: 0.5 }}
+        initial={{ opacity: 0, y:-100 }}
+        animate={{ opacity: 1, y: 0}}
+        exit={{ opacity: 0, y: 100 }}>
           <div className="hero-content flex-col lg:flex-row">
             <img
               src="/images/hero.webp"
@@ -22,8 +28,9 @@ const Home: FC = () => {
               <button className="btn-primary btn">Get Started</button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
+      </AnimatePresence>
     </>
   );
 };
